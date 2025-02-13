@@ -4,7 +4,7 @@ const axios = require('axios');
 const url = require('url');
 
 const app = express();
-const port = process.env.PORT || 10000;
+const port = process.env.PORT || 1500;
 
 app.get('/api/auth/discord/redirect', async (req, res) => {
     const { code } = req.query;
@@ -71,6 +71,7 @@ app.get('/auth/discord', (req, res) => {
     console.log('Авторизация по ссылке: ', authUrl);
     res.send(`Перейдите по следующей ссылке для авторизации: <a href="${authUrl}">${authUrl}</a>`);
 });
+console.log(process.env.GUILD_ID)
 
 app.listen(port, () => {
     console.log(`Сервер запущен на порту ${port}`);
