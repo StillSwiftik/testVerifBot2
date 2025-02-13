@@ -4,17 +4,16 @@ const axios = require('axios');
 const url = require('url');
 
 const app = express();
-const port = process.env.PORT || 1500;
+const port = process.env.PORT || 10000;
 
 app.get('/api/auth/discord/redirect', async (req, res) => {
     const { code } = req.query;
-
+    console.log('работает');
     if (!code) {
         return res.status(400).send('Ошибка: не найден код авторизации.');
     }
 
     try {
-        // Получаем access_token через OAuth2
         const formData = new url.URLSearchParams({
             client_id: process.env.DISCORD_CLIENT_ID,
             client_secret: process.env.DISCORD_CLIENT_SECRET,
